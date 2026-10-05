@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Nueva orden de trabajo</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Fecha</label>
+                    <input type="date" class="form-control" name="fecha" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cliente</label>
+                    <select class="form-select" name="cliente_id" required>
+                        <option value="">Seleccione un cliente</option>
+                        {% for item in clientes %}
+                            <option value="{{ item.id }}">{{ item.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Servicio</label>
+                    <select class="form-select" name="servicio_id" required>
+                        <option value="">Seleccione un servicio</option>
+                        {% for item in servicios %}
+                            <option value="{{ item.id }}">{{ item.descripcion }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
